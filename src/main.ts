@@ -66,28 +66,81 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+  const syrupElements = document.getElementsByClassName("syrup");
+
+  if (syrupElements.length === 0) return;
+
+  const color = syrups[input.value];
+  if (!color) return;
+  for (let i = 0; i < syrupElements.length; i++) {
+    const element = syrupElements[i] as HTMLDivElement;
+    element.style.setProperty("--syrup-color", color);
+  }
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+    const radios = document.querySelectorAll('input[name="syrup"]');
+ 
+    for (let radio of radios) {
+        radio.addEventListener("change", () => {
+            applySyrup(radio as HTMLInputElement);
+        });
+    }
+ 
+    const checked = document.querySelector(
+        'input[name="syrup"]:checked',
+    ) as HTMLInputElement;
+    applySyrup(checked);
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+    const radios = document.querySelectorAll('input[name="cream"]');
+
+    for (let radio of radios) {
+        radio.addEventListener("change", () => {
+        applyCream(radio as HTMLInputElement);
+      });
+}
+ 
+    const checked = document.querySelector(
+        'input[name="cream"]:checked',
+    ) as HTMLInputElement;
+    applyCream(checked);
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+    const radios = document.querySelectorAll('input[name="temperature"]');
+
+    for (let radio of radios) {
+        radio.addEventListener("change", () => {
+            applyTemperature(radio as HTMLInputElement);
+      });
+}
+ 
+    const checked = document.querySelector(
+        'input[name="temperature"]:checked',
+    ) as HTMLInputElement;
+    applyTemperature(checked);
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
+    const radios = document.querySelectorAll('input[name="base"]');
+
+    for (let radio of radios) {
+        radio.addEventListener("change", () => {
+            applyBase(radio as HTMLInputElement);
+      });
+}
+ 
+    const checked = document.querySelector(
+        'input[name="base"]:checked',
+    ) as HTMLInputElement;
+    applyBase(checked);
 }
 
 setupBaseListeners();
